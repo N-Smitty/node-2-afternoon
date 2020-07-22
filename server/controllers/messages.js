@@ -2,7 +2,7 @@ let messages = [];
 let id = 0;
 
 module.exports = {
-    create: (req, res) => {
+    create: (req, res) => {  
         const {text, time} = req.body;
         messages.push({id, text, time});
         id++;
@@ -22,6 +22,8 @@ module.exports = {
             text: text || message.text,
             time: message.time
         };
+        
+        res.status(200).send(messages);
     },
     delete: (req, res) => {
         const deleteID = req.params.id;
